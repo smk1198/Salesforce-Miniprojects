@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Admin Notification</masterLabel>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__HomePage</target>
+        <target>lightning__RecordPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig 
+        targets="lightning__AppPage,lightning__HomePage,lightning__RecordPage">
+        <property name="title" type="String" label="Title" description="Main Headline of the announcement"/>
+        <property name="message" type="String" label="Message Body" description="Detail Text of Announcement"/>
+        <property 
+        name="severity" 
+        type="String" 
+        label="Severity Label" 
+        description="Announcement Style"
+        datasource="info,warning,error"
+        default="info"
+        />
+
+        <property 
+        name="ctaLabel" 
+        type="String" 
+        label="CTA Label" 
+        description="Text for call to action button label"
+        />
+
+        <property 
+        name="ctaDestination" 
+        type="String" 
+        label="CTA Description" 
+        description="URL for call to action"
+        />
+    </targetConfig>
+
+    </targetConfigs>
+</LightningComponentBundle>

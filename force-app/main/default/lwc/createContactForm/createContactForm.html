@@ -1,0 +1,38 @@
+<template>
+    <lightning-card title="Create New Contact" icon-name="standard:contact">
+    <lightning-record-edit-form
+    object-api-name="Contact"
+    onerror={handleError}
+    onsubmit={handleSubmit}
+    onsuccess={handleSuccess}
+    >
+    <lightning-input-field field-name="FirstName"></lightning-input-field>
+    <lightning-input-field field-name="LastName"></lightning-input-field>
+    <!--This field will be hidden from the User on UI-->
+    <div class="slds-hide">
+        <lightning-input-field field-name="AccountId"></lightning-input-field>
+    </div>
+    <lightning-input-field field-name="LeadSource" onchange={handleLeadSourceChange}></lightning-input-field>
+
+    <template lwc:if={accountIdList.length}>
+        <div class="slds-form-element_horizontal">
+
+            <lightning-record-picker 
+        label="Select Account" 
+        placeholder="Search Account"
+        object-api-name="Account"
+        filter={accountFilter}
+        onchange={handleAccountChange}
+        value={selectedAccountId}
+        >
+
+        </lightning-record-picker>
+
+        </div>
+        
+    </template>
+
+    <lightning-button label="Create Contact" variant="brand" type="submit" class="slds-m-top_medium"></lightning-button>
+    </lightning-record-edit-form>
+</lightning-card>
+</template>
