@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="Top Accounts" icon-name="standard:account">
+        <div class="slds-var-p-around_small">
+            <h3 class="slds-text-heading_small">Top Account By Annual Revenue</h3>
+            <template lwc:if={accountsData}>
+                <lightning-datatable key-field="id" data={accountsData} columns={accColumns} max-row-selection="1" onrowselection={handleRowSelection}></lightning-datatable>
+            </template>
+        </div>
+        <template lwc:if={hasOpportunities}>
+        <div class="slds-var-p-around_small">
+            <h3 class="slds-text-heading_small">Top 5 Opportunities for {selectedAccountName}</h3>
+              <lightning-datatable key-field="id" data={oppData} columns={oppColumns} hide-checkbox-column></lightning-datatable>
+            
+        </div>
+    </template>
+    </lightning-card>
+</template>
